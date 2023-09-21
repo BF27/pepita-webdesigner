@@ -11,14 +11,18 @@ body {
 }
 
 #root {
+  display: flex;
   min-height: 100vh;
 }
 
 .offcanvas-nav {
   @include theme($bg: $accentColor, $color: $lightColor);
-  width: 0;
-  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
 
+  height: 100vh;
+  width: 0;
   padding: 0;
 
   overflow-x: hidden;
@@ -29,27 +33,25 @@ body {
 
   &.active {
     width: min(80vw, 400px);
-    padding: 20px 16px;
   }
 
   .navigation-list {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    width: 100%;
+    @include flex($dir: column, $align: start);
+    width: max(100%, 256px);
     gap: 26px;
-    margin: 0;
+    margin: 20px 0;
     padding: 0;
 
     list-style-type: none;
     &__item {
-      display: flex;
-      align-items: center;
+      @include flex($justify: start);
       gap: 16px;
-      max-width: 80%;
+      width: 100%;
+      padding: 0 16px;
 
       input[type="text"] {
         padding: 10px 13px;
+        width: 100%;
         border: 2px solid #fcfcfc;
         outline: none;
         line-height: 16px;
@@ -62,8 +64,7 @@ body {
       }
 
       a {
-        display: flex;
-        align-items: center;
+        @include flex;
         gap: 16px;
 
         color: inherit;
@@ -76,10 +77,96 @@ body {
     }
 
     &__icon {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex;
       width: 24px;
+    }
+  }
+}
+
+.page-header {
+  @include flex;
+
+  height: 60px;
+
+  &__logo {
+    @include flex($dir: column, $align: start);
+    @include font($size: 10px, $transform: uppercase);
+  }
+
+  &__title {
+    @include font($color: $accentColor);
+  }
+
+  .nav-btn {
+    @include flex($dir: column);
+    gap: 3px;
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    &__line {
+      height: 2px;
+      width: 18px;
+      background: $primaryColor;
+    }
+  }
+}
+
+.collections-page {
+  .search-bar {
+    padding-top: 12px;
+    &__label {
+      @include flex($justify: space-between);
+      padding: 8px 10px;
+      width: 100%;
+      border: 2px solid $accentColor;
+    }
+    &__input {
+      border: 0;
+      outline: 0;
+      color: $accentColor;
+      width: 100%;
+
+      &::placeholder {
+        @include font($color: $accentColor);
+        font-family: $mainFont;
+      }
+    }
+
+    &__advanced {
+      @include font($color: $accentColor, $size: 12px);
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .collections-section {
+    @include flex($align: start);
+    flex-wrap: wrap;
+    padding: 9px 0;
+    gap: 18px;
+    &__card {
+      @include flex($dir: column, $align: start, $justify: start);
+      max-width: 165px;
+      overflow: hidden;
+
+      img {
+        height: 124px;
+        width: 165px;
+        object-fit: cover;
+        object-position: left top;
+      }
+
+      a {
+        @include font($size: 12px, $transform: uppercase, $color: $accentColor);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
