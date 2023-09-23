@@ -428,7 +428,7 @@ function renderMain(page) {
 }
 
 function main() {
-  renderMain("tickets");
+  renderMain("collections");
   initHandlers();
 }
 
