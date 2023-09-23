@@ -296,8 +296,6 @@ function createTicketsPage() {
   const ticketsPageEl = createEl("main", { className: "tickets-page" });
   const ticketsHeaderEl = createTicketsHeader();
   const orderSectionEl = createOrderSection();
-  
-  handleTicketCounter();
 
   ticketsPageEl.append(
     ticketsHeaderEl,
@@ -409,7 +407,6 @@ function handleTicketCounter() {
 function initHandlers() {
   handleMenuClick();
   handlePageChange();
-  
 }
 
 function renderMain(page) {
@@ -421,6 +418,7 @@ function renderMain(page) {
   if (page === "collections") {
     titleEl.innerText = "Collections";
     wrapperEl.append(createCollectionsPage());
+    handleTicketCounter();
   } else if (page === "tickets") {
     titleEl.innerText = "Plan Your Visit";
     wrapperEl.append(createTicketsPage());
