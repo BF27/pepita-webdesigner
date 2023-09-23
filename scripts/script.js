@@ -418,11 +418,11 @@ function renderMain(page) {
   if (page === "collections") {
     titleEl.innerText = "Collections";
     wrapperEl.append(createCollectionsPage());
-    handleTicketCounter();
   } else if (page === "tickets") {
     titleEl.innerText = "Plan Your Visit";
     wrapperEl.append(createTicketsPage());
     handleOrderDateChange();
+    handleTicketCounter(); 
   }
 }
 
