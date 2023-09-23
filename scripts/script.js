@@ -297,6 +297,7 @@ function createTicketsPage() {
   const ticketsHeaderEl = createTicketsHeader();
   const orderSectionEl = createOrderSection();
   
+  handleTicketCounter();
 
   ticketsPageEl.append(
     ticketsHeaderEl,
@@ -408,7 +409,7 @@ function handleTicketCounter() {
 function initHandlers() {
   handleMenuClick();
   handlePageChange();
-  handleTicketCounter();
+  
 }
 
 function renderMain(page) {
