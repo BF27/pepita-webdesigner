@@ -110,6 +110,7 @@ body {
   font-size: 18px;
   color: #FF473A;
   text-transform: none;
+  margin: 0;
 }
 .page-header .nav-btn {
   display: flex;

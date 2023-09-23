@@ -95,6 +95,7 @@ body {
 
   &__title {
     @include font($color: $accentColor);
+    margin: 0;
   }
 
   .nav-btn {
