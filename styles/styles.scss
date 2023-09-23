@@ -4,6 +4,9 @@
 
 * {
   @include reset;
+  -webkit-font-smoothing: antialiased;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -20,6 +23,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 100;
 
   height: 100vh;
   width: 0;
@@ -113,6 +117,10 @@ body {
   }
 }
 
+.wrapper {
+  height: calc(100vh - 60px);
+}
+
 .collections-page {
   .search-bar {
     padding-top: 12px;
@@ -168,6 +176,132 @@ body {
           text-decoration: underline;
         }
       }
+    }
+  }
+}
+
+.tickets-page {
+  @include flex($dir: column, $justify: stretch);
+  height: 100%;
+  &__header {
+    padding-top: 12px;
+    width: 100%;
+  }
+
+  &__title {
+    @include font($size: 24px);
+    margin: 0;
+  }
+
+  &__sub-title {
+    @include font($size: 12px, $color: $accentColor);
+    max-width: 250px;
+  }
+
+  .order {
+    @include flex($dir: column, $justify: stretch);
+    position: relative;
+    width: 100%;
+    &__bottom {
+      margin-top: 28px;
+    }
+
+    &__top,
+    &__bottom {
+      width: 100%;
+     /*  position: absolute;
+      bottom: 0;
+      left: 0; */
+    }
+
+    &__header {
+      @include font($color: $lightgray);
+      border-bottom: 2px solid #f4f5f2;
+      margin: 0 auto;
+      width: 100%;
+    }
+    &__title {
+      @include flex();
+      font-size: inherit;
+      padding: 0;
+      margin: 0;
+
+      &.active {
+        color: $primaryColor;
+        border-bottom: 3px solid $accentColor;
+        padding-bottom: 12px;
+      }
+    }
+
+    &__sub-title {
+      padding-top: 4px;
+      @include flex($dir: column);
+      @include font($size: 12px);
+    }
+  }
+
+  &__list {
+    @include flex($dir: column);
+    gap: 32px;
+
+    .list-item {
+      @include flex($justify: space-between);
+      height: 45px;
+      width: 100%;
+      padding: 0 9px;
+      &__titles {
+        @include flex($dir: column, $align: start);
+      }
+      &__name {
+        @include font;
+      }
+      &__sub {
+        @include font($size: 12px, $color: $lightgray);
+      }
+      &__counter {
+        @include flex;
+        gap: 9px;
+        width: 100px;
+        color: $lightgray;
+
+        .counter-btn {
+          @include flex;
+          height: 18px;
+          width: 18px;
+          border: 1px solid $lightgray;
+          color: inherit;
+          outline: 0;
+          background: transparent;
+        }
+
+        .counter-number {
+          @include font($color: inherit);
+          text-align: center;
+          width: 20px;
+          &.active {
+            color: $primaryColor;
+          }
+        }
+      }
+    }
+  }
+
+  .total-price {
+    @include flex($justify: space-between);
+    border-top: 2px solid $accentColor;
+    margin: 42px 0 36px 0;
+    padding: 0 9px;
+
+    &__value {
+      width: 100px;
+      text-align: center;
+    }
+  }
+
+  .order-btn-container {
+    @include flex;
+    .order-btn {
+      @include button;
     }
   }
 }
